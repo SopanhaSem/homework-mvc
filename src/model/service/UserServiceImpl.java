@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService{
     @Override
     public void addNewUser(UserDto userDto) {
         int nextId = 3;
-        User user = new User(nextId++, userDto.name(), userDto.email());
+        User user = new User(++nextId, userDto.name(), userDto.email());
         userDao.addNewUser(user);
     }
 
