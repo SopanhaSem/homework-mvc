@@ -12,7 +12,7 @@ public class Main {
         // delete user
         userController.deleteUserById(1);
         // update user
-        userController.updateUser(new User(1,"queen","kk@gmail.com"));
+        userController.updateUser(new User(2,"queen","kk@gmail.com"));
         // I show all Users
         System.out.println("All users:");
         userController.getAllUsers().forEach(System.out::println);

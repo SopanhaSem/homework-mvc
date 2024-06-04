@@ -3,6 +3,7 @@ package model.dao;
 import model.User;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class UserDaoImpl implements UserDao{
     private List<User> userList = new ArrayList<>(
@@ -21,12 +22,15 @@ public class UserDaoImpl implements UserDao{
 
     @Override
     public void updateUser(User user) {
-        for (int i = 0; i < userList.size(); i++) {
-            User users = userList.get(i);
-            if (user.getId() != null && user.getId().equals(user.getId())) {
-                userList.set(i, users);
-                break;
-            }
+        Optional<User> existingUserOpt = userList.stream()
+                .filter(u -> u.getId().equals(user.getId()))
+                .findFirst();
+        if (existingUserOpt.isPresent()) {
+            User existingUser = existingUserOpt.get();
+            existingUser.setName(user.getName());
+            existingUser.setEmail(user.getEmail());
+        } else {
+            throw new IllegalArgumentException("User not found with id: " + user.getId());
         }
     }
 
