@@ -30,7 +30,7 @@ public class UserDaoImpl implements UserDao{
             existingUser.setName(user.getName());
             existingUser.setEmail(user.getEmail());
         } else {
-            throw new IllegalArgumentException("User not found with id: " + user.getId());
+            System.out.println("[!] User not found with id: " + user.getId());
         }
     }
 
