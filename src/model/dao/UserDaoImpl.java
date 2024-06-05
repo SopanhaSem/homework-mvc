@@ -30,7 +30,7 @@ public class UserDaoImpl implements UserDao{
             existingUser.setName(user.getName());
             existingUser.setEmail(user.getEmail());
         } else {
-            System.out.println("[!] User not found with id: " + user.getId());
+            throw new RuntimeException("[!] User not found with id: " + user.getId());
         }
     }
 
